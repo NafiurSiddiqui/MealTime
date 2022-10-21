@@ -1,13 +1,17 @@
+import React, { useContext, useState } from 'react';
 import Cart from './components/Cart/Cart';
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
-import React, { useState } from 'react';
-import CartProvider from './store/CartProvider';
+import CartContext from './store/cart-context';
+
 
 function App() {
 	//State for model
 	const [cartIsShown, setCartIsShown] = useState(false);
+	const [orderPlaced, setOrderPlaced] = useState(false);
 
+	const cartCtx = useContext(CartContext);
+	
 	const showCartHandler = () => {
 		setCartIsShown(true);
 	};
@@ -16,14 +20,28 @@ function App() {
 		setCartIsShown(false);
 	};
 
+	const resetStateHandler = (value)=>{
+		cartCtx.resetState();
+		setOrderPlaced(false);
+		setCartIsShown(false);
+		console.log('FROM RESET HANDLER');
+	}
+
+	const orderHandler = ()=>{
+		setOrderPlaced(true);
+		console.log('order placed');
+	 }
+
 	return (
-		<CartProvider>
-			{cartIsShown && <Cart onClose={hideCartHandler} />}
-			<Header onShowCart={showCartHandler} />
+		<>
+		
+			{cartIsShown && <Cart onClose={hideCartHandler} onReset={resetStateHandler} onOrder={orderHandler} orderPlaced={orderPlaced}  />}
+			<Header onShowCart={showCartHandler}  />
 			<main>
 				<Meals />
 			</main>
-		</CartProvider>
+		</>
+		
 	);
 }
 

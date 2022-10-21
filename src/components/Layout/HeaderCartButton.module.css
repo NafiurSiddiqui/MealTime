@@ -3,7 +3,7 @@
 	font: inherit;
 	border: none;
 	/* background-color: #4d1601; */
-	background-color: #640504;
+	background-color: var(--secondaryColor);
 	color: white;
 	padding: 0.75rem 3rem;
 	display: flex;
@@ -15,7 +15,7 @@
 
 .button:hover,
 .button:active {
-	background-color: #550302;
+	background-color: var(--btnHover);
 }
 
 .icon {
@@ -25,7 +25,7 @@
 }
 
 .badge {
-	background-color: #920604;
+	background-color: #787600;
 	padding: 0.25rem 1rem;
 	border-radius: 25px;
 	margin-left: 1rem;
@@ -34,7 +34,7 @@
 
 .button:hover .badge,
 .button:active .badge {
-	background-color: #92320c;
+	background-color:  #787600;
 }
 
 .bump {
@@ -56,5 +56,21 @@
 	}
 	100% {
 		transform: scale(1);
+	}
+}
+
+
+
+@media screen and (max-width: 590px) {
+	.button{
+		padding:0.40rem 1.5rem;
+	}
+}
+
+@media screen and (max-width: 390px) {
+	.button{
+		padding:0.40rem 1.1rem;
+		font-size: 0.8rem;
+
 	}
 }

@@ -1,0 +1,32 @@
+.actions {
+    text-align: right;
+}
+.actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--primaryColor);
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    
+   }
+   
+   .actions button:hover,
+   .actions button:active {
+    background-color: var(--btnHover);
+    border-color: var(--secondaryColor);
+    color: white;
+   }
+   
+   .actions .button--alt {
+    color: var(--txt);
+   }
+   
+   .actions .button {
+    background-color: var(--primaryColor);
+   }
+
+   .message {
+    font-size: 1.4rem;
+    font-weight: bold;
+   }

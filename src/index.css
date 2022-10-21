@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
+
+
 * {
 	box-sizing: border-box;
 }
@@ -12,3 +14,12 @@ body {
 	margin: 0;
 	background-color: #d8d4d4c7;
 }
+
+:root {
+
+	--primaryColor: #94982b;
+	--secondaryColor: #7f8400;
+	--btnHover:#c1ad00;
+	--txt:#8a8f00;
+	
+};

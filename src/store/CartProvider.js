@@ -63,7 +63,7 @@ const cartReducer = (state, action) => {
 		//remove item entirely if < 1
 		if (existingItem.amount === 1) {
 			updatedItems = state.items.filter((item) =>{
-				console.log(item);
+				
 				return item.id !== action.id});
 		} else {
 			//decrease the amount
@@ -80,10 +80,16 @@ const cartReducer = (state, action) => {
 		};
 	}
 
+	if (action.type === 'RESET'){
+		console.log('RESET performed');
+		return defaultCartState;
+	}
+
 	return defaultCartState;
 };
 
 const CartProvider = (props) => {
+
 	const [cartState, dispatchCartAction] = useReducer(
 		cartReducer,
 		defaultCartState
@@ -97,11 +103,16 @@ const CartProvider = (props) => {
 		dispatchCartAction({ type: 'REMOVE', id: id });
 	};
 
+	const resetStateHandler = ()=>{
+		dispatchCartAction({type: 'RESET'})
+	}
+
 	const cartContext = {
 		items: cartState.items,
 		totalAmount: cartState.totalAmount,
 		addItem: addItemToCartHandler,
 		removeItem: removeItemFromCartHandler,
+		resetState: resetStateHandler
 	};
 
 	return (
