@@ -4,8 +4,10 @@ import CartIcon from '../Cart/CartIcon';
 import classes from './HeaderCartButton.module.css';
 
 function HeaderCartButton(props) {
+	
 	const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
 	const cartCtx = useContext(CartContext);
+	
 	//pull out items only from cartCtx
 	const { items } = cartCtx;
 
@@ -36,6 +38,7 @@ function HeaderCartButton(props) {
 			clearTimeout(timer);
 		};
 	}, [items]);
+	
 	return (
 		<button className={btnClasses} onClick={props.onClick}>
 			<span className={classes.icon}>
@@ -62,7 +65,7 @@ export default HeaderCartButton;
  * @useEffect -
  * to deal with the animation changes
  *add bump class - if there is an item and item length > 1.
- * @const { items } - we did this in order to not  rerender everything when something happen in the cartCtx but only when somehting happens with the items only
+
  * @useEffect - [dependency] used items only from the object destructuing in order to only track of items, not the whole cartCtx.
  * @useState -
  * To check for btn state

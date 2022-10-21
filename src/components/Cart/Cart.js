@@ -5,16 +5,18 @@ import classes from './Cart.module.css';
 import CartItem from './CartItem';
 
 function Cart(props) {
+
  const cartCtx = useContext(CartContext);
  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-
  const hasItems = cartCtx.items.length > 0;
+
  const cartItemRemoveHandler = (id) => {
   cartCtx.removeItem(id);
  };
 
  const cartItemAddHandler = (item) => {
   cartCtx.addItem({ ...item, amount: 1 });
+ 
  };
 
  const cartItems = (
@@ -27,6 +29,7 @@ function Cart(props) {
      price={item.price}
      onRemove={cartItemRemoveHandler.bind(null, item.id)}
      onAdd={cartItemAddHandler.bind(null, item)}
+     
     />
    ))}
   </ul>
@@ -65,5 +68,5 @@ export default Cart;
  *
  * @onRemove and @onAdd -
  *
- * Bind - used to pass in the id of the item on that handler and to pass in the whole item on add.
+ * @bind - we used bind to pass in the args. Without binding we cannot directly pass in the arguments there.
  */

@@ -9,8 +9,6 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
 
-	console.log(state);
-
 	if (action.type === 'ADD') {
 		
 		const updatedTotalAmount =
@@ -24,15 +22,19 @@ const cartReducer = (state, action) => {
 
 		
 		const existingCartItem = state.items[existingCartItemIndex];
+			
+		
 		let updatedItems;
 
 		if (existingCartItem) {
+
 			const updatedItem = {
 				...existingCartItem,
 				amount: existingCartItem.amount + action.item.amount,
 			};
 			updatedItems = [...state.items];
 			updatedItems[existingCartItemIndex] = updatedItem;
+			
 		} else {
 			updatedItems = state.items.concat(action.item);
 			//   concat returns a new array rather than mutating existing array.
@@ -50,6 +52,8 @@ const cartReducer = (state, action) => {
 		const existingCartItemIndex = state.items.findIndex(
 			(item) => item.id === action.id
 		);
+
+	
 		//reach out for the item itself
 		const existingItem = state.items[existingCartItemIndex];
 		//update the amount
@@ -58,7 +62,9 @@ const cartReducer = (state, action) => {
 		let updatedItems;
 		//remove item entirely if < 1
 		if (existingItem.amount === 1) {
-			updatedItems = state.items.filter((item) => item.id !== action.id);
+			updatedItems = state.items.filter((item) =>{
+				console.log(item);
+				return item.id !== action.id});
 		} else {
 			//decrease the amount
 			const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
