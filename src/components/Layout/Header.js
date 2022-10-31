@@ -7,7 +7,7 @@ function Header(props) {
 	return (
 		<>
 			<header className={classes.header}>
-				<h1>No meals</h1>
+				<h1>React Meals</h1>
 			
 				<HeaderCartButton onClick={props.onShowCart} />
 			</header>
