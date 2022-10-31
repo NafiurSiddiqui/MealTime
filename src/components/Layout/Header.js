@@ -8,6 +8,7 @@ function Header(props) {
 		<>
 			<header className={classes.header}>
 				<h1>test meals</h1>
+				<h2>another test</h2>
 				<HeaderCartButton onClick={props.onShowCart} />
 			</header>
 			<div className={classes['main-image']}>
